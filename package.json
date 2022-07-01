@@ -1,0 +1,50 @@
+{
+  "name": "l-ui-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "packages/*",
+    "play"
+  ],
+  "scripts": {
+    "dev": "pnpm -C play website:dev",
+    "build": "gulp -f build/gulpfile.ts"
+  },
+  "keywords": [],
+  "author": "Lancer",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@types/gulp": "^4.0.9",
+    "@types/gulp-autoprefixer": "^0.0.33",
+    "@types/gulp-clean-css": "^4.3.0",
+    "@types/gulp-sass": "^5.0.0",
+    "@types/sass": "^1.43.1",
+    "@vue/compiler-sfc": "^3.2.37",
+    "chalk": "^5.0.1",
+    "clipboard-copy": "^4.0.1",
+    "cross-env": "^7.0.3",
+    "fast-glob": "^3.2.11",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-typescript": "6.0.0-alpha.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.75.7",
+    "rollup-plugin-typescript2": "^0.32.1",
+    "rollup-plugin-vue": "^6.0.0",
+    "sucrase": "^3.22.0",
+    "ts-morph": "^15.1.0",
+    "typescript": "^4.7.4",
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@l-ui/components": "workspace:^1.0.0",
+    "@l-ui/theme-chalk": "workspace:^1.0.0",
+    "@l-ui/utils": "workspace:^1.0.0",
+    "l-ui": "workspace:^1.0.0"
+  }
+}

@@ -1,0 +1,244 @@
+@import './common/var.scss';
+@font-face {
+    font-family: "l-ui-icons"; /* Project id 1569086 */
+    src: url('./fonts/iconfont.woff2?t=1656570975718') format('woff2'),
+         url('./fonts/iconfont.woff?t=1656570975718') format('woff'),
+         url('./fonts/iconfont.ttf?t=1656570975718') format('truetype');
+  }
+  
+  [class^="#{$namespace}-icon"] {
+    font-family: "l-ui-icons" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .l-icon-arrow-double-left:before {
+    content: "\e671";
+  }
+  
+  .l-icon-arrow-left-circle:before {
+    content: "\e672";
+  }
+  
+  .l-icon-arrow-double-right:before {
+    content: "\e673";
+  }
+  
+  .l-icon-caps-lock:before {
+    content: "\e674";
+  }
+  
+  .l-icon-camera:before {
+    content: "\e675";
+  }
+  
+  .l-icon-chart-bar:before {
+    content: "\e676";
+  }
+  
+  .l-icon-attachment:before {
+    content: "\e677";
+  }
+  
+  .l-icon-code:before {
+    content: "\e678";
+  }
+  
+  .l-icon-close:before {
+    content: "\e679";
+  }
+  
+  .l-icon-check-item:before {
+    content: "\e67a";
+  }
+  
+  .l-icon-calendar:before {
+    content: "\e67b";
+  }
+  
+  .l-icon-comment:before {
+    content: "\e67c";
+  }
+  
+  .l-icon-column-vertical:before {
+    content: "\e67d";
+  }
+  
+  .l-icon-column-horizontal:before {
+    content: "\e67e";
+  }
+  
+  .l-icon-complete:before {
+    content: "\e67f";
+  }
+  
+  .l-icon-chart-pie:before {
+    content: "\e680";
+  }
+  
+  .l-icon-cry:before {
+    content: "\e681";
+  }
+  
+  .l-icon-customer-service:before {
+    content: "\e682";
+  }
+  
+  .l-icon-delete:before {
+    content: "\e683";
+  }
+  
+  .l-icon-direction-down:before {
+    content: "\e684";
+  }
+  
+  .l-icon-copy:before {
+    content: "\e685";
+  }
+  
+  .l-icon-cut:before {
+    content: "\e686";
+  }
+  
+  .l-icon-direction-right:before {
+    content: "\e687";
+  }
+  
+  .l-icon-direction-up:before {
+    content: "\e688";
+  }
+  
+  .l-icon-discount:before {
+    content: "\e689";
+  }
+  
+  .l-icon-direction-left:before {
+    content: "\e68a";
+  }
+  
+  .l-icon-file-open:before {
+    content: "\e68b";
+  }
+  
+  .l-icon-forward:before {
+    content: "\e68c";
+  }
+  
+  .l-icon-import:before {
+    content: "\e68d";
+  }
+  
+  .l-icon-image-text:before {
+    content: "\e68e";
+  }
+  
+  .l-icon-keyboard-26:before {
+    content: "\e68f";
+  }
+  
+  .l-icon-keyboard-9:before {
+    content: "\e690";
+  }
+  
+  .l-icon-layers:before {
+    content: "\e691";
+  }
+  
+  .l-icon-modular:before {
+    content: "\e692";
+  }
+  
+  .l-icon-notification:before {
+    content: "\e693";
+  }
+  
+  .l-icon-navigation:before {
+    content: "\e694";
+  }
+  
+  .l-icon-arrow-left-bold:before {
+    content: "\e695";
+  }
+  
+  .l-icon-arrow-up-bold:before {
+    content: "\e696";
+  }
+  
+  .l-icon-close-bold:before {
+    content: "\e697";
+  }
+  
+  .l-icon-arrow-down-bold:before {
+    content: "\e698";
+  }
+  
+  .l-icon-minus-bold:before {
+    content: "\e699";
+  }
+  
+  .l-icon-arrow-right-bold:before {
+    content: "\e69a";
+  }
+  
+  .l-icon-select-bold:before {
+    content: "\e69b";
+  }
+  
+  .l-icon-3column:before {
+    content: "\e663";
+  }
+  
+  .l-icon-column-4:before {
+    content: "\e664";
+  }
+  
+  .l-icon-add:before {
+    content: "\e665";
+  }
+  
+  .l-icon-add-circle:before {
+    content: "\e666";
+  }
+  
+  .l-icon-adjust:before {
+    content: "\e667";
+  }
+  
+  .l-icon-arrow-up-circle:before {
+    content: "\e668";
+  }
+  
+  .l-icon-arrow-right-circle:before {
+    content: "\e669";
+  }
+  
+  .l-icon-arrow-down:before {
+    content: "\e66a";
+  }
+  
+  .l-icon-ashbin:before {
+    content: "\e66b";
+  }
+  
+  .l-icon-arrow-right:before {
+    content: "\e66c";
+  }
+  
+  .l-icon-browse:before {
+    content: "\e66d";
+  }
+  
+  .l-icon-bottom:before {
+    content: "\e66e";
+  }
+  
+  .l-icon-back:before {
+    content: "\e66f";
+  }
+  
+  .l-icon-bad:before {
+    content: "\e670";
+  }
+  
