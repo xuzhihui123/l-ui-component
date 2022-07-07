@@ -24,6 +24,8 @@
      cwd: compRoot,
      onlyDirectories: true, // 只查找文件夹
    });
+
+
  
    // 分别把components文件夹下的组件，放到dist/es/components下 和 dist/lib/components
    const builds = files.map(async (file: string) => {

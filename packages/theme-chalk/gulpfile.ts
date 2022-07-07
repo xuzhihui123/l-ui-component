@@ -9,6 +9,11 @@
  import autoprefixer from "gulp-autoprefixer";
  import cleanCss from "gulp-clean-css";
  import path from "path";
+import chalk from 'chalk'
+import consola from 'consola'
+
+
+
  
  /**
   * gulp是类似一个管道的方式执行，从入口开始到出口，中间一步步执行
@@ -24,7 +29,13 @@
    return src(path.resolve(__dirname, "./src/*.scss"))
      .pipe(sass.sync())
      .pipe(autoprefixer())
-     .pipe(cleanCss())
+     .pipe(cleanCss({}, (details) => {
+        consola.success(
+          `css文件打包 ${chalk.cyan(details.name)}: ${chalk.yellow(
+            details.stats.originalSize / 1000
+          )} KB -> ${chalk.green(details.stats.minifiedSize / 1000)} KB`
+        )
+      }))
      .pipe(dest("./dist/css"));
  }
  

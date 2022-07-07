@@ -12,3 +12,8 @@ packages/w-plus/version.ts
 
 # local env files
 *.local
+
+
+packages/utils/es
+packages/utils/lib
+packages/theme-chalk/dist

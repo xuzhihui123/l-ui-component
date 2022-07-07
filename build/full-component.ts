@@ -20,11 +20,8 @@
      plugins: [nodeResolve(), typescript(), vue(), commonjs()],
      external: (id) => /^vue/.test(id), // 打包的时候不打包vue代码
    };
- 
-   // 组件库两种使用方式 import 导入组件库 在浏览器中使用script
- 
+
    // esm umd
- 
    const buildConfig = [
      {
        format: "umd", // 打包的格式
@@ -60,6 +57,7 @@
      .filter((f) => f.isFile())
      .filter((f) => !["package.json"].includes(f.name))
      .map((f) => path.resolve(luiRoot, f.name));
+
  
    const config = {
      input: entryPoints,

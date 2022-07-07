@@ -1,6 +1,8 @@
 import * as components from '@l-ui/components'
 import type { App } from "vue";
 
+
+
 // const components = [WIcon,WButton];
 
 const install = (app: App) => {

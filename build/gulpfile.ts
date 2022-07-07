@@ -18,15 +18,18 @@ const copySourceCode = () => async () => {
  * 6. 发布组件
  */
 export default series(
-  withTaskName("clean", async () => run("rm -rf ./dist")), // 删除dist目录
+  withTaskName("clean", async () => run("rimraf ./dist")), // 删除dist目录
   parallel(
+      withTaskName("buildUtils", () =>
+      run("pnpm run -C ./packages/utils build")  // 打包utils
+    ),
     withTaskName("buildPackages", () =>
-      run("pnpm run -C ./packages/theme-chalk build")
+      run("pnpm run -C ./packages/theme-chalk build") // 打包css
     ), // 并行执行packages目录下的build脚本
     withTaskName("buildFullComponent", () =>
-      run("pnpm run build buildFullComponent")
+      run("pnpm run build buildFullComponent")  // 打包完整的组件
     ), // 执行build命令时会调用rollup，给rollup传参数buildFullComponent，那么就会执行导出任务叫buildFullComponent
-    withTaskName("buildComponent", () => run("pnpm run build buildComponent"))
+    withTaskName("buildComponent", () => run("pnpm run build buildComponent")) 
   ),
   parallel(genTypes, copySourceCode())
 );

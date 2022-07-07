@@ -23,7 +23,6 @@ import { projRoot } from './path';
    return new Promise((resolve) => {
      // 将命令分割 例如：rm -rf 分割为['rm', '-rf'],进行解构[cmd,...args]
      const [cmd, ...args] = command.split(" ");
-     console.log(cmd,args);
      const app = spawn(cmd, args, {
          cwd:projRoot,
          stdio:"inherit",
