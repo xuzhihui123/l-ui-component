@@ -11,15 +11,15 @@
  import path from "path";
 import chalk from 'chalk'
 import consola from 'consola'
+import fs from 'fs'
+import {resolve,basename} from 'path'
+import { sync } from "fast-glob"; // 同步查找文件
 
 
-
- 
  /**
   * gulp是类似一个管道的方式执行，从入口开始到出口，中间一步步执行
   */
  import { series, src, dest } from "gulp";
- 
  /**
   * 对sass文件做处理
   */
@@ -46,6 +46,32 @@ import consola from 'consola'
      // 从src下单fonts文件夹下的所有文件开始=>压缩=>最终输出到当前目录下dist下的font目录
      return src(path.resolve(__dirname,'./src/fonts/**')).pipe(cleanCss()).pipe(dest("./dist/fonts"))
  }
+
+
+
+/**
+ *   改变 打包后的css的fonts引入路径
+ */
+  async function changeFontsSrcDir(){
+    consola.success(`${chalk.yellow('css fonts路径修改中。。。')}`)
+    let cssFileIncludeChange = /(icon|index)/
+    const files = sync("*", {
+      cwd: resolve(__dirname,'dist/css'),
+      onlyFiles:true
+    });
+    files.map(f=>{
+      let path = resolve(__dirname,`dist/css/${f}`)
+      if(cssFileIncludeChange.test(basename(path))){
+         let content = fs.readFileSync(path,'utf-8')
+         let reusltContent = content.replace(/url\(fonts/g,"url(../fonts")
+         fs.writeFileSync(path,reusltContent,'utf-8')
+      }
+    })
+    consola.success(`${chalk.yellow('css fonts路径修改完成。。。')}`)
+
+ }
+
+  
  
  /**
   * 把打包好的css输出到根目录的dist
@@ -54,6 +80,9 @@ import consola from 'consola'
      const rootDistPath = path.resolve(__dirname,'../../dist/theme-chalk')
      return src(path.resolve(__dirname,'./dist/**')).pipe(dest(rootDistPath))
  }
+
+
+
  
- export default series(compile, copyfont,copyfullstyle);
+ export default series(compile, copyfont,changeFontsSrcDir,copyfullstyle);
  
