@@ -1,6 +1,5 @@
-import * as components from '@l-ui/components'
-import type { App } from "vue";
-
+import * as components from "@l-ui/components"
+import type { App } from "vue"
 
 const install = (app: App) => {
   // 每个组件在写的时候都提供了install方法
@@ -9,12 +8,12 @@ const install = (app: App) => {
   // components.forEach((component) => app.use(component));
 
   Object.entries(components).forEach(([name, component]) => {
-    app.component(name, component);
-  });
-};
+    app.component(name, component)
+  })
+}
 
 export default {
-  install,
-};
+  install
+}
 
-export * from "@l-ui/components";
+export * from "@l-ui/components"
