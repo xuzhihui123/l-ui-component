@@ -12,7 +12,6 @@ import pkgJson from 'l-ui/package.json'
 
 // 升级版本version 写入pkg
 async function writePkgJSon() {
-  if(process.env.IS_PUBLISH){
    consola.success(
       chalk.yellow(`组件库发布中。。。。`)
    )
@@ -21,11 +20,12 @@ async function writePkgJSon() {
    pkgJson.version = versionArr.join('.')
    let resultPkgStr = JSON.stringify(pkgJson)
    fs.writeFileSync(resolve(luiRoot,'package.json'),resultPkgStr)
+   pkgJson.main = 'lib/index.js'
+   pkgJson['module']="es/index.js"
+   fs.writeFileSync(resolve(outDir,'package.json'),JSON.stringify(pkgJson))
    consola.success(
       chalk.yellow(`组件库发布完成。。。。`)
    )
-  }
-  await run(`cp ${luiRoot}/package.json ${outDir}/package.json`);
 }
 
 

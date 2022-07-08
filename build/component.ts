@@ -4,6 +4,8 @@
  import { nodeResolve } from "@rollup/plugin-node-resolve";
  import commonjs from "@rollup/plugin-commonjs";
  import vue from "rollup-plugin-vue";
+import vueJsx from '@vitejs/plugin-vue-jsx'
+
  import typescript from "rollup-plugin-typescript2";
  import { series, parallel } from "gulp";
  import { sync } from "fast-glob"; // 同步查找文件
@@ -33,7 +35,7 @@
      const input = path.resolve(compRoot, file, "index.ts");
      const config = {
        input,
-       plugins: [nodeResolve(), typescript(), vue(), commonjs()],
+       plugins: [nodeResolve(), typescript(), vue(),vueJsx(), commonjs()],
        external: (id) => /^vue/.test(id) || /^@l-ui/.test(id), // 排除掉vue和@l-ui的依赖
      };
      const bundle = await rollup(config);
@@ -41,7 +43,8 @@
        format: config.format,
        file: path.resolve(config.output.path, `components/${file}/index.js`),
        paths: pathRewriter(config.output.name), // @l-ui => l-ui/es l-ui/lib  处理路径
-       exports: "named",
+       exports: config.format === 'cjs' ? "named" : undefined,
+       sourcemap:true
      }));
  
      await Promise.all(
@@ -139,6 +142,7 @@
        .map((config) => ({
          format: config.format,
          file: path.resolve(config.output.path, "components/index.js"),
+         sourcemap:true
        }))
        .map((config) => bundle.write(config as OutputOptions))
    );

@@ -2,11 +2,6 @@ import * as components from '@l-ui/components'
 import type { App } from "vue";
 
 
-
-
-console.log(Object.entries(components));
-// const components = [WIcon,WButton];
-
 const install = (app: App) => {
   // 每个组件在写的时候都提供了install方法
 
