@@ -26,7 +26,7 @@ import { projRoot } from './path';
      const app = spawn(cmd, args, {
          cwd:projRoot,
          stdio:"inherit",
-         shell:true  // 默认情况下 linux才支持 rm -rf  windows安装git bash
+         shell:true  // 默认情况下 linux才支持 rm -rf  windows安装git bash 或者按照rimraf
      });
      // 在进程已结束并且子进程的标准输入输出流已关闭之后，则触发 'close' 事件
      app.on('close',resolve)  // 

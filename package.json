@@ -10,6 +10,9 @@
   "scripts": {
     "dev": "pnpm -C play website:dev",
     "build": "gulp  -f build/gulpfile.ts",
+    "buildPublish": "cross-env IS_PUBLISH=true gulp  -f build/gulpfile.ts",
+    "build:theme":"gulp -f packages/theme-chalk/gulpfile.ts",
+    "build:util":"gulp -f packages/utils/gulpfile.ts",
     "ccm": "node  build/createComponent.ts"
   },
   "keywords": [],

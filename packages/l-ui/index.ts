@@ -3,6 +3,8 @@ import type { App } from "vue";
 
 
 
+
+console.log(Object.entries(components));
 // const components = [WIcon,WButton];
 
 const install = (app: App) => {
