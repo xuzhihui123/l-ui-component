@@ -3,8 +3,10 @@
  */
 import { nodeResolve } from "@rollup/plugin-node-resolve"
 import commonjs from "@rollup/plugin-commonjs"
+
 import vue from "rollup-plugin-vue"
 import vueJsx from "@vitejs/plugin-vue-jsx"
+// import { terser } from "rollup-plugin-terser";
 
 import typescript from "rollup-plugin-typescript2"
 import { series, parallel } from "gulp"
@@ -18,6 +20,7 @@ import { Project, SourceFile } from "ts-morph"
 import glob from "fast-glob"
 import * as VueCompiler from "@vue/compiler-sfc"
 import fs from "fs/promises"
+import { externalFn } from "./utils/rollup"
 
 const buildEachComponent = async () => {
   // 打包每个组件
@@ -33,8 +36,8 @@ const buildEachComponent = async () => {
     const input = path.resolve(compRoot, file, "index.ts")
     const config = {
       input,
-      plugins: [nodeResolve(), typescript(), vue(), vueJsx(), commonjs()],
-      external: (id) => /^vue/.test(id) || /^@l-ui/.test(id) // 排除掉vue和@l-ui的依赖
+      plugins: [nodeResolve(),typescript(), commonjs(),vue(),vueJsx() ],
+      external: externalFn(['vue','@l-ui','lodash'])
     }
     const bundle = await rollup(config)
     const options = Object.values(buildConfig).map((config) => ({

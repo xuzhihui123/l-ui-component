@@ -31,6 +31,7 @@
     "@types/sass": "^1.43.1",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
+    "@vitejs/plugin-vue-jsx": "^1.3.10",
     "@vue/compiler-sfc": "^3.2.37",
     "chalk": "4.0.0",
     "clipboard-copy": "^4.0.1",
@@ -49,6 +50,7 @@
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
+    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.32.1",
     "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.53.0",
@@ -61,6 +63,7 @@
     "@l-ui/components": "workspace:^1.0.0",
     "@l-ui/theme-chalk": "workspace:^1.0.0",
     "@l-ui/utils": "workspace:^1.0.0",
-    "l-ui": "workspace:^1.0.0"
+    "l-ui": "workspace:^1.0.0",
+    "lodash": "^4.17.21"
   }
 }
