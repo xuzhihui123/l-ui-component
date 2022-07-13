@@ -11,13 +11,13 @@ export type SFCWithInstall<T> = T & Plugin
  * 定义一个withInstall方法处理以下组件类型问题
  * @param comp
  */
-export const withInstall = <T>(comp: T) => {
+export const withInstall = <T>(name: string, comp: T) => {
   /**
    * 直接写comp.install = function(){} 的话会报错，因为comp下没有install方法
    * 所以从vue中引入Plugin类型，断言comp的类型为T&Plugin
    */
   ;(comp as SFCWithInstall<T>).install = function (app: App) {
-    app.component((comp as any).name, comp)
+    app.component(name || (comp as any).name, comp)
   }
   return comp as SFCWithInstall<T>
 }

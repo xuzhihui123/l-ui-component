@@ -1,14 +1,10 @@
-/**
- * 安装依赖 pnpm install rollup @rollup/plugin-node-resolve @rollup/plugin-commonjs rollup-plugin-typescript2 rollup-plugin-vue -D -w
- */
 import { nodeResolve } from "@rollup/plugin-node-resolve" // 处理文件路径
 import commonjs from "@rollup/plugin-commonjs" // 将 CommonJS 模块转换为 ES6
 import vue from "rollup-plugin-vue"
 import vueJsx from "@vitejs/plugin-vue-jsx"
-// import { terser } from "rollup-plugin-terser"; // 暂时不用压缩
-
-
+// import json from '@rollup/plugin-json';
 import typescript from "rollup-plugin-typescript2"
+
 import { parallel } from "gulp"
 import path from "path"
 import { outDir, luiRoot } from "./utils/path"
@@ -22,8 +18,8 @@ const buildFull = async () => {
   // rollup 打包的配置信息
   const config = {
     input: path.resolve(luiRoot, "index.ts"), // 打包入口
-    plugins: [nodeResolve(), typescript(), commonjs(),vue(), vueJsx()],
-    external: externalFn(['vue','lodash'])
+    plugins: [nodeResolve(), commonjs(), typescript(), vue(), vueJsx()],
+    external: externalFn(["vue"])
   }
 
   // esm umd
@@ -67,8 +63,8 @@ async function buildEntry() {
 
   const config = {
     input: entryPoints,
-    plugins: [nodeResolve(), typescript(),vue(), vueJsx()],
-    external: externalFn(['vue','@l-ui','lodash'])
+    plugins: [nodeResolve(), typescript(), vue(), vueJsx()],
+    external: externalFn(["vue", "@l-ui"])
   }
   const bundle = await rollup(config)
   return Promise.all(

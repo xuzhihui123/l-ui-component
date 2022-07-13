@@ -3,6 +3,7 @@
  */
 import { nodeResolve } from "@rollup/plugin-node-resolve"
 import commonjs from "@rollup/plugin-commonjs"
+// import json from '@rollup/plugin-json';
 
 import vue from "rollup-plugin-vue"
 import vueJsx from "@vitejs/plugin-vue-jsx"
@@ -36,8 +37,8 @@ const buildEachComponent = async () => {
     const input = path.resolve(compRoot, file, "index.ts")
     const config = {
       input,
-      plugins: [nodeResolve(),typescript(), commonjs(),vue(),vueJsx() ],
-      external: externalFn(['vue','@l-ui','lodash'])
+      plugins: [nodeResolve(), typescript(), commonjs(), vue(), vueJsx()],
+      external: externalFn(["vue", "@l-ui"])
     }
     const bundle = await rollup(config)
     const options = Object.values(buildConfig).map((config) => ({

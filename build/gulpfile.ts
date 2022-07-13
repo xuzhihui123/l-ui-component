@@ -2,7 +2,6 @@
 import { series, parallel } from "gulp"
 import { genTypes } from "./gen-types"
 import { withTaskName, run } from "./utils"
-import { outDir, luiRoot } from "./utils/path"
 
 // gulp 不叫打包，做代码转化 vite
 /**

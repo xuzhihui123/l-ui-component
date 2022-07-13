@@ -24,6 +24,6 @@
   "exclude": [ // 排除掉哪些类库
     "node_modules",
     "**/__tests__",
-    "l-ui/**"
+    "l-ui/**",
   ]
 }

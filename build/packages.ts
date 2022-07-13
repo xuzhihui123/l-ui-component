@@ -8,6 +8,7 @@ import { withTaskName } from "./utils"
 
 // 打包处理
 export const buildPackages = (dirname: string, name: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const tasks = Object.entries(buildConfig).map(([module, config]) => {
     const output = path.resolve(dirname, config.output.name)
     // 安装依赖gulp-typescript

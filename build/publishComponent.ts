@@ -1,7 +1,6 @@
 import { series } from "gulp"
 import chalk from "chalk"
 import consola from "consola"
-import { run } from "./utils"
 import { luiRoot, outDir } from "./utils/path"
 import { resolve } from "path"
 import fs from "fs"
