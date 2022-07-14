@@ -1,1 +1,1 @@
-export const target = "es2015"
+export const target = "es2018"

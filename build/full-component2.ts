@@ -1,10 +1,12 @@
-import { target } from "./utils/build-info"
 import { nodeResolve } from "@rollup/plugin-node-resolve" // 处理文件路径
 import commonjs from "@rollup/plugin-commonjs" // 将 CommonJS 模块转换为 ES6
-import vue from "rollup-plugin-vue" // 处理vue文件
-import vueJsx from "@vitejs/plugin-vue-jsx" // 处理jsx
-import esbuild, { minify as minifyPlugin } from "rollup-plugin-esbuild" // esbuild替代rollup-plugin-typescript2来打包ts,轻量快速
-import json from "@rollup/plugin-json" // 处理json
+import vue from "rollup-plugin-vue"
+import vueJsx from "@vitejs/plugin-vue-jsx"
+// import json from '@rollup/plugin-json';
+import typescript from "rollup-plugin-typescript2"
+
+import { terser } from "rollup-plugin-terser"
+
 import { parallel } from "gulp"
 import path from "path"
 import { outDir, luiRoot } from "./utils/path"
@@ -14,26 +16,14 @@ import { pathRewriter, withTaskName } from "./utils"
 import { externalFn, formatBundleFilename, writeBundles } from "./utils/rollup"
 
 const buildFull = async (minify: boolean) => {
+  // rollup 打包的配置信息
   const config = {
     input: path.resolve(luiRoot, "index.ts"), // 打包入口
-    plugins: [
-      nodeResolve({
-        // 必须配置extensions不然esbuild无法检测内部monorepo引入的文件
-        extensions: [".mjs", ".js", ".json", ".ts"]
-      }),
-      commonjs(),
-      vue(),
-      vueJsx(),
-      json(),
-      esbuild({
-        sourceMap: minify,
-        target
-      })
-    ],
+    plugins: [nodeResolve(), commonjs(), typescript(), vue(), vueJsx()],
     external: externalFn(["vue"])
   }
 
-  if (minify) config.plugins.push(minifyPlugin({ sourceMap: true }))
+  if (minify) config.plugins.push(terser())
 
   // esm umd
   const buildConfig: OutputOptions[] = [
@@ -63,22 +53,11 @@ const buildFull = async (minify: boolean) => {
 const buildEntry = async (minify: boolean) => {
   const config = {
     input: path.resolve(luiRoot, "index.ts"),
-    plugins: [
-      nodeResolve({
-        extensions: [".mjs", ".js", ".json", ".ts"]
-      }),
-      vue(),
-      vueJsx(),
-      json(),
-      esbuild({
-        sourceMap: minify,
-        target
-      })
-    ],
+    plugins: [nodeResolve(), typescript(), vue(), vueJsx()],
     external: externalFn(["vue", "@l-ui"])
   }
 
-  if (minify) config.plugins.push(minifyPlugin({ sourceMap: true }))
+  if (minify) config.plugins.push(terser())
 
   const bundle = await rollup(config)
 

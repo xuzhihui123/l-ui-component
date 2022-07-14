@@ -10,6 +10,7 @@ export default defineComponent({
       <div>
         <l-icon color="red" name="caps-lock" size={30}></l-icon>
         <l-date />
+        <l-ggc />
       </div>
     )
   }

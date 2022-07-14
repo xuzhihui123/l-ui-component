@@ -9,12 +9,14 @@
   ],
   "scripts": {
     "dev": "pnpm -C play website:dev",
-    "build": "gulp  -f build/gulpfile.ts",
-    "buildPublish": "cross-env IS_PUBLISH=true gulp  -f build/gulpfile.ts",
-    "build:theme": "gulp -f packages/theme-chalk/gulpfile.ts",
-    "build:util": "gulp -f packages/utils/gulpfile.ts",
+    "build": "NODE_OPTIONS=--max-old-space-size=4096 pnpm run -C build build",
+    "buildPublish": "cross-env IS_PUBLISH=true pnpm run -C build build",
+    "build:theme": "pnpm run -C packages/theme-chalk build",
+    "build:util": "pnpm run -C packages/utils build",
     "ccm": "node  build/node-scripts/createComponent.ts",
     "rcm": "node build/node-scripts/removeComponent.ts",
+    "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
+    "clean:dist": "rimraf dist",
     "prettier": "prettier --write .",
     "lint": "eslint  ./ --fix --ext .ts,.tsx,.vue,.js,.jsx"
   },
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@esbuild-kit/cjs-loader": "^2.3.0",
     "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@types/gulp": "^4.0.9",
     "@types/gulp-autoprefixer": "^0.0.33",
@@ -39,6 +42,7 @@
     "clipboard-copy": "^4.0.1",
     "consola": "^2.15.3",
     "cross-env": "^7.0.3",
+    "esbuild": "0.14.47",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -52,7 +56,7 @@
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
-    "rollup-plugin-typescript2": "^0.32.1",
+    "rollup-plugin-esbuild": "^4.9.1",
     "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.53.0",
     "sucrase": "^3.22.0",
@@ -67,5 +71,8 @@
     "element-plus": "^2.2.9",
     "l-ui": "workspace:^1.0.0",
     "lodash": "^4.17.21"
+  },
+  "engines": {
+    "node": ">= 16"
   }
 }

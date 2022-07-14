@@ -1,6 +1,5 @@
 // 打包方式：串行(series)  并行(parallel)
 import { series, parallel } from "gulp"
-import { genTypes } from "./gen-types"
 import { withTaskName, run } from "./utils"
 
 // gulp 不叫打包，做代码转化 vite
@@ -13,7 +12,7 @@ import { withTaskName, run } from "./utils"
  * 6. 发布组件
  */
 export default series(
-  withTaskName("clean", async () => run("rimraf ./dist")), // 删除dist目录
+  withTaskName("clean", async () => run("pnpm run clean")), // 删除dist目录
   parallel(
     withTaskName(
       "buildUtils",
@@ -27,15 +26,14 @@ export default series(
       "buildFullComponent",
       () => run("pnpm run build buildFullComponent") // 打包完整的组件
     ), // 执行build命令时会调用rollup，给rollup传参数buildFullComponent，那么就会执行导出任务叫buildFullComponent
-    withTaskName("buildComponent", () => run("pnpm run build buildComponent"))
+    withTaskName("buildComponent", () => run("pnpm run build buildComponent")),
+    withTaskName("genTypes", () => run("pnpm run build genTypes"))
   ),
-  parallel(
-    genTypes,
-    withTaskName("publishComponent", () => run(`pnpm run build publishComponent`)) // 打包发布 升级版本
-  )
+  withTaskName("publishComponent", () => run(`pnpm run build publishComponent`)) // 打包发布 升级版本
 )
 
 // 任务执行器 gulp 任务名 就会执行对应的任务
 export * from "./full-component"
 export * from "./component"
 export * from "./publishComponent"
+export * from "./gen-types"

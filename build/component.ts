@@ -1,15 +1,17 @@
 /**
- * 安装依赖 pnpm install fast-glob -w -D
+ *
  */
 import { nodeResolve } from "@rollup/plugin-node-resolve"
 import commonjs from "@rollup/plugin-commonjs"
 // import json from '@rollup/plugin-json';
+import { target } from "./utils/build-info"
 
 import vue from "rollup-plugin-vue"
 import vueJsx from "@vitejs/plugin-vue-jsx"
-// import { terser } from "rollup-plugin-terser";
+import json from "@rollup/plugin-json" // 处理json
 
-import typescript from "rollup-plugin-typescript2"
+import esbuild from "rollup-plugin-esbuild" // esbuild替代rollup-plugin-typescript2来打包ts,轻量快速
+
 import { series, parallel } from "gulp"
 import { sync } from "fast-glob" // 同步查找文件
 import { compRoot, outDir, projRoot } from "./utils/path"
@@ -21,7 +23,7 @@ import { Project, SourceFile } from "ts-morph"
 import glob from "fast-glob"
 import * as VueCompiler from "@vue/compiler-sfc"
 import fs from "fs/promises"
-import { externalFn } from "./utils/rollup"
+import { externalFn, writeBundles } from "./utils/rollup"
 
 const buildEachComponent = async () => {
   // 打包每个组件
@@ -37,7 +39,16 @@ const buildEachComponent = async () => {
     const input = path.resolve(compRoot, file, "index.ts")
     const config = {
       input,
-      plugins: [nodeResolve(), typescript(), commonjs(), vue(), vueJsx()],
+      plugins: [
+        nodeResolve(),
+        commonjs(),
+        vue(),
+        vueJsx(),
+        json(),
+        esbuild({
+          target
+        })
+      ],
       external: externalFn(["vue", "@l-ui"])
     }
     const bundle = await rollup(config)
@@ -49,7 +60,7 @@ const buildEachComponent = async () => {
       sourcemap: true
     }))
 
-    await Promise.all(options.map((option) => bundle.write(option as OutputOptions)))
+    await writeBundles(bundle, options as OutputOptions[])
   })
 
   return Promise.all(builds)
@@ -133,19 +144,22 @@ function copyTypes() {
 async function buildComponentEntry() {
   const config = {
     input: path.resolve(compRoot, "index.ts"),
-    plugins: [typescript()],
+    plugins: [
+      esbuild({
+        target
+      })
+    ],
     external: () => true
   }
   const bundle = await rollup(config)
-  return Promise.all(
-    Object.values(buildConfig)
-      .map((config) => ({
-        format: config.format,
-        file: path.resolve(config.output.path, "components/index.js"),
-        sourcemap: true
-      }))
-      .map((config) => bundle.write(config as OutputOptions))
+  return writeBundles(
+    bundle,
+    Object.values(buildConfig).map((config) => ({
+      format: config.format,
+      file: path.resolve(config.output.path, "components/index.js"),
+      sourcemap: true
+    })) as OutputOptions[]
   )
 }
 
-export const buildComponent = series(buildEachComponent, genTypes, copyTypes(), buildComponentEntry)
+export const buildComponent = series(buildEachComponent, buildComponentEntry, genTypes, copyTypes())
