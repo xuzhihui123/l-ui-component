@@ -45,5 +45,6 @@ packages/theme-chalk/dist
 packages/utils/es
 packages/utils/lib
 typings
+docs/.vitepress/dist
 # 不对markdown进行格式化, 容易打乱自己编排的样式
 *.md

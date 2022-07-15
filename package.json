@@ -5,10 +5,13 @@
   "main": "index.js",
   "workspaces": [
     "packages/*",
-    "play"
+    "play",
+    "docs"
   ],
   "scripts": {
     "dev": "pnpm -C play website:dev",
+    "docs:dev": "pnpm -C docs dev",
+    "docs:build": "pnpm -C docs build",
     "build": "pnpm run -C build build",
     "buildPublish": "cross-env IS_PUBLISH=true pnpm run -C build build",
     "build:theme": "pnpm run -C packages/theme-chalk build",

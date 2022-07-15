@@ -43,6 +43,7 @@ pnpm-workspace.yaml
 packages/theme-chalk/dist
 packages/utils/es
 packages/utils/lib
+docs/.vitepress/dist
 typings
 # 不对markdown进行格式化, 容易打乱自己编排的样式
 *.md

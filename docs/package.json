@@ -1,0 +1,26 @@
+{
+  "name": "@l-ui/docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev . --port 5002",
+    "serve": "vitepress serve . --port 5001",
+    "build": "vitepress build ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.53.0",
+    "vite": "^2.9.13",
+    "vitepress": "0.22.4",
+    "vitepress-theme-demoblock": "^1.4.2"
+  },
+  "dependencies": {
+    "@l-ui/components": "workspace:^1.0.0",
+    "@l-ui/theme-chalk": "workspace:^1.0.0",
+    "@l-ui/utils": "workspace:^1.0.0",
+    "l-ui": "workspace:^1.1.7"
+  }
+}

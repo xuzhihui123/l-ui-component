@@ -8,9 +8,7 @@ export default defineComponent({
   render() {
     return (
       <div>
-        <l-icon color="red" name="caps-lock" size={30}></l-icon>
-        <l-date />
-        <l-ggc />
+        <l-icon color="green" name="arrow-double-right" size={30}></l-icon>
       </div>
     )
   }

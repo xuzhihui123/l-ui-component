@@ -1,10 +1,11 @@
 {
-  "name": "play",
+  "name": "@l-ui/play",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "website:dev": "vite"
+    "website:dev": "vite",
+    "website:build":"vite build"
   },
   "author": "",
   "license": "ISC",
