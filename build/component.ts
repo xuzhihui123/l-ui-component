@@ -12,13 +12,13 @@ import json from "@rollup/plugin-json" // 处理json
 
 import esbuild from "rollup-plugin-esbuild" // esbuild替代rollup-plugin-typescript2来打包ts,轻量快速
 
-import { series, parallel } from "gulp"
+import { series, parallel, src, dest } from "gulp"
 import { sync } from "fast-glob" // 同步查找文件
 import { compRoot, outDir, projRoot } from "./utils/path"
 import path from "path"
 import { rollup, OutputOptions } from "rollup"
 import { buildConfig } from "./utils/config"
-import { pathRewriter, run } from "./utils"
+import { pathRewriter } from "./utils"
 import { Project, SourceFile } from "ts-morph"
 import glob from "fast-glob"
 import * as VueCompiler from "@vue/compiler-sfc"
@@ -133,10 +133,9 @@ async function genTypes() {
 }
 
 function copyTypes() {
-  const src = path.resolve(outDir, "types/components/")
-  const copy = (module) => {
+  const copy = (module) => async () => {
     const output = path.resolve(outDir, module, "components")
-    return () => run(`cp -r ${src}/* ${output}`)
+    return src(path.resolve(outDir, "types/components/**")).pipe(dest(output))
   }
   return parallel(copy("es"), copy("lib"))
 }

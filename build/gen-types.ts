@@ -3,8 +3,7 @@ import glob from "fast-glob"
 import { Project, ModuleKind, ScriptTarget, SourceFile } from "ts-morph"
 import path from "path"
 import fs from "fs/promises"
-import { parallel, series } from "gulp"
-import { run, withTaskName } from "./utils"
+import { parallel, series, src, dest } from "gulp"
 import { buildConfig } from "./utils/config"
 
 export const genEntryTypes = async () => {
@@ -48,13 +47,10 @@ export const genEntryTypes = async () => {
   await Promise.all(tasks)
 }
 export const copyEntryTypes = () => {
-  const src = path.resolve(outDir, "entry/types")
-  const copy = (module) =>
-    parallel(
-      withTaskName(`copyEntryTypes:${module}`, () =>
-        run(`cp -r ${src}/* ${path.resolve(outDir, buildConfig[module].output.path)}/`)
-      )
-    )
+  const copy = (module) => async () => {
+    const output = path.resolve(outDir, buildConfig[module].output.path)
+    return src(path.resolve(outDir, "entry/types/**")).pipe(dest(output))
+  }
   return parallel(copy("esm"), copy("cjs"))
 }
 
