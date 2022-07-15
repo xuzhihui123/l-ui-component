@@ -1,9 +1,9 @@
 @import './common/var.scss';
 @font-face {
     font-family: "l-ui-icons"; /* Project id 1569086 */
-    src: url('./fonts/iconfont.woff2?t=1656570975718') format('woff2'),
-         url('./fonts/iconfont.woff?t=1656570975718') format('woff'),
-         url('./fonts/iconfont.ttf?t=1656570975718') format('truetype');
+    src: url('./fonts/iconfont.woff2') format('woff2'),
+         url('./fonts/iconfont.woff') format('woff'),
+         url('./fonts/iconfont.ttf') format('truetype');
   }
   
   [class^="#{$namespace}-icon"] {

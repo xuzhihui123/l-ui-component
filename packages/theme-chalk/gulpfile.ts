@@ -45,14 +45,14 @@ function compile() {
  */
 function copyfont() {
   // 从src下单fonts文件夹下的所有文件开始=>压缩=>最终输出到当前目录下dist下的font目录
-  return src(path.resolve(__dirname, "./src/fonts/**")).pipe(cleanCss()).pipe(dest("./dist/fonts"))
+  return src(path.resolve(__dirname, "./src/fonts/**")).pipe(dest("./dist/fonts"))
 }
 
 /**
  *   改变 打包后的css的fonts引入路径
  */
 async function changeFontsSrcDir() {
-  consola.success(`${chalk.yellow("css fonts路径修改中。。。")}`)
+  consola.success(`${chalk.yellow("css fonts路径修改中...")}`)
   const cssFileIncludeChange = /(icon|index)/
   const files = sync("*", {
     cwd: resolve(__dirname, "dist/css"),
@@ -66,7 +66,7 @@ async function changeFontsSrcDir() {
       fs.writeFileSync(path, reusltContent, "utf-8")
     }
   })
-  consola.success(`${chalk.yellow("css fonts路径修改完成。。。")}`)
+  consola.success(`${chalk.yellow("css fonts路径修改完成！！！")}`)
 }
 
 /**

@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "dev": "pnpm -C play website:dev",
-    "build": "NODE_OPTIONS=--max-old-space-size=4096 pnpm run -C build build",
+    "build": "pnpm run -C build build",
     "buildPublish": "cross-env IS_PUBLISH=true pnpm run -C build build",
     "build:theme": "pnpm run -C packages/theme-chalk build",
     "build:util": "pnpm run -C packages/utils build",
