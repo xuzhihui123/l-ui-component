@@ -1,7 +1,9 @@
 import { target } from "./utils/build-info"
 import { nodeResolve } from "@rollup/plugin-node-resolve" // 处理文件路径
 import commonjs from "@rollup/plugin-commonjs" // 将 CommonJS 模块转换为 ES6
-import vue from "rollup-plugin-vue" // 处理vue文件
+// import vue from "rollup-plugin-vue" // 处理vue文件
+import vue from "@vitejs/plugin-vue"
+
 import vueJsx from "@vitejs/plugin-vue-jsx" // 处理jsx
 import esbuild, { minify as minifyPlugin } from "rollup-plugin-esbuild" // esbuild替代rollup-plugin-typescript2来打包ts,轻量快速
 import json from "@rollup/plugin-json" // 处理json
@@ -22,7 +24,9 @@ const buildFull = async (minify: boolean) => {
         extensions: [".mjs", ".js", ".json", ".ts"]
       }),
       commonjs(),
-      vue(),
+      vue({
+        isProduction: false
+      }),
       vueJsx(),
       json(),
       esbuild({
@@ -67,7 +71,9 @@ const buildEntry = async (minify: boolean) => {
       nodeResolve({
         extensions: [".mjs", ".js", ".json", ".ts"]
       }),
-      vue(),
+      vue({
+        isProduction: false
+      }),
       vueJsx(),
       json(),
       esbuild({

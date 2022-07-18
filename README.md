@@ -33,8 +33,6 @@
 
 ​    |-- tsconfig.json
 
-​    |-- .vscode
-
 ​    |-- build # 打包脚本
 
 ​    |-- docs # 组件库文档，后续组件写入，文档也陆续补充
@@ -43,97 +41,11 @@
 
 ​    |   |-- components
 
-​    |   |   |-- index.ts
-
-​    |   |   |-- package.json
-
-​    |   |   |-- icon
-
-​    |   |       |-- index.ts
-
-​    |   |       |-- src
-
-​    |   |           |-- icon.ts
-
-​    |   |           |-- icon.vue
-
 ​    |   |-- l-ui
-
-​    |   |   |-- index.ts
-
-​    |   |   |-- package.json
 
 ​    |   |-- theme-chalk
 
-​    |   |   |-- .DS_Store
-
-​    |   |   |-- gulpfile.ts
-
-​    |   |   |-- package.json
-
-​    |   |   |-- dist
-
-​    |   |   |   |-- css
-
-​    |   |   |   |   |-- date.css
-
-​    |   |   |   |   |-- icon.css
-
-​    |   |   |   |   |-- index.css
-
-​    |   |   |   |-- fonts
-
-​    |   |   |       |-- iconfont.ttf
-
-​    |   |   |       |-- iconfont.woff
-
-​    |   |   |       |-- iconfont.woff2
-
-​    |   |   |-- src
-
-​    |   |       |-- .DS_Store
-
-​    |   |       |-- icon.scss
-
-​    |   |       |-- index.scss
-
-​    |   |       |-- common
-
-​    |   |       |   |-- var.scss
-
-​    |   |       |-- fonts
-
-​    |   |       |   |-- iconfont.ttf
-
-​    |   |       |   |-- iconfont.woff
-
-​    |   |       |   |-- iconfont.woff2
-
-​    |   |       |-- mixins
-
-​    |   |           |-- config.scss
-
-​    |   |           |-- mixins.scss
-
 ​    |   |-- utils
-
-​    |       |-- gulpfile.ts
-
-​    |       |-- package.json
-
-​    |       |-- with-install.ts
-
-​    |       |-- es
-
-​    |       |   |-- with-install.d.ts
-
-​    |       |   |-- with-install.js
-
-​    |       |-- lib
-
-​    |           |-- with-install.d.ts
-
-​    |           |-- with-install.js
 
 ​    |-- play
 

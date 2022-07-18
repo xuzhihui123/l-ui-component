@@ -60,7 +60,6 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
     "rollup-plugin-esbuild": "^4.9.1",
-    "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.53.0",
     "sucrase": "^3.22.0",
     "ts-morph": "^15.1.0",

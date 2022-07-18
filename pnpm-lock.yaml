@@ -43,7 +43,6 @@ importers:
       rimraf: ^3.0.2
       rollup: ^2.75.7
       rollup-plugin-esbuild: ^4.9.1
-      rollup-plugin-vue: ^6.0.0
       sass: ^1.53.0
       sucrase: ^3.22.0
       ts-morph: ^15.1.0
@@ -90,7 +89,6 @@ importers:
       rimraf: registry.npmmirror.com/rimraf/3.0.2
       rollup: registry.npmmirror.com/rollup/2.76.0
       rollup-plugin-esbuild: registry.npmmirror.com/rollup-plugin-esbuild/4.9.1_ulee7jvelea5jzrfuzdgg4b7ma
-      rollup-plugin-vue: registry.npmmirror.com/rollup-plugin-vue/6.0.0_@vue+compiler-sfc@3.2.37
       sass: registry.npmmirror.com/sass/1.53.0
       sucrase: registry.npmmirror.com/sucrase/3.24.0
       ts-morph: registry.npmmirror.com/ts-morph/15.1.0
@@ -3533,12 +3531,6 @@ packages:
     engines: {node: '>=4.0'}
     dev: true
 
-  registry.npmmirror.com/estree-walker/0.6.1:
-    resolution: {integrity: sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/estree-walker/-/estree-walker-0.6.1.tgz}
-    name: estree-walker
-    version: 0.6.1
-    dev: true
-
   registry.npmmirror.com/estree-walker/1.0.1:
     resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/estree-walker/-/estree-walker-1.0.1.tgz}
     name: estree-walker
@@ -6088,30 +6080,6 @@ packages:
       rollup: registry.npmmirror.com/rollup/2.76.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  registry.npmmirror.com/rollup-plugin-vue/6.0.0_@vue+compiler-sfc@3.2.37:
-    resolution: {integrity: sha512-oVvUd84d5u73M2HYM3XsMDLtZRIA/tw2U0dmHlXU2UWP5JARYHzh/U9vcxaN/x/9MrepY7VH3pHFeOhrWpxs/Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rollup-plugin-vue/-/rollup-plugin-vue-6.0.0.tgz}
-    id: registry.npmmirror.com/rollup-plugin-vue/6.0.0
-    name: rollup-plugin-vue
-    version: 6.0.0
-    peerDependencies:
-      '@vue/compiler-sfc': '*'
-    dependencies:
-      '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.37
-      debug: registry.npmmirror.com/debug/4.3.4
-      hash-sum: registry.npmmirror.com/hash-sum/2.0.0
-      rollup-pluginutils: registry.npmmirror.com/rollup-pluginutils/2.8.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  registry.npmmirror.com/rollup-pluginutils/2.8.2:
-    resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz}
-    name: rollup-pluginutils
-    version: 2.8.2
-    dependencies:
-      estree-walker: registry.npmmirror.com/estree-walker/0.6.1
     dev: true
 
   registry.npmmirror.com/rollup/2.76.0:

@@ -6,7 +6,9 @@ import commonjs from "@rollup/plugin-commonjs"
 // import json from '@rollup/plugin-json';
 import { target } from "./utils/build-info"
 
-import vue from "rollup-plugin-vue"
+// import vue from "rollup-plugin-vue"
+import vue from "@vitejs/plugin-vue"
+
 import vueJsx from "@vitejs/plugin-vue-jsx"
 import json from "@rollup/plugin-json" // 处理json
 
@@ -42,7 +44,9 @@ const buildEachComponent = async () => {
       plugins: [
         nodeResolve(),
         commonjs(),
-        vue(),
+        vue({
+          isProduction: false
+        }),
         vueJsx(),
         json(),
         esbuild({
