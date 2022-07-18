@@ -12,6 +12,7 @@ import 'element-plus/dist/index.css'
 // import LUi from "l-ui"
 // import "@l-ui/theme-chalk/src/index.scss"
 
+// 打包后引入 我们的组件并且注册
 import LUi from "../../../dist/index.esm.js"
 import "../../../dist/theme-chalk/css/index.css"
 

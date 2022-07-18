@@ -8,7 +8,7 @@ import {demoBlockPlugin} from 'vitepress-theme-demoblock'
 
 export const config: UserConfig = {
   title: '内部组件库文档',
-  description: 'You can focus on what is lost or you can fight for what is left.',
+  description: '集成内部通用组件等',
   themeConfig:{
     nav,
     sidebar,
